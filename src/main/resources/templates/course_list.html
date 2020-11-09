@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <script type="text/javascript">
+        function clearSearch() {
+            window.location = "[[@{/}]]";
+        }
+    </script>
+    <style>
+        body  {
+
+                background-color: #FFFACD;
+        }
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #1E90FF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <br>
+    <br>
+
+<center>
+    <h1>Lista svih telefona </h1>
+</center>
+    <br>
+    <center>
+    <form th:action="@{/lista}">
+        Pretraga telefona: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+        &nbsp;
+        <input type="submit" value="Pretraga" />
+        &nbsp;
+        <a class="btn btn-primary" th:href="@{/list}"  role="button" >Izbrisi </a>
+    </form>
+        <br>
+
+
+    </center>
+    <table id="customers">
+        <thead>
+        <th scope="row">#ID</th>
+        <th scope="row">Marka</th>
+        <th scope="row">Model</th>
+        <th scope="row">Lokacija</th>
+        <th scope="row">Cena</th>
+        <th scope="row">Opis</th>
+
+        </thead>
+        <tbody>
+        <tr th:each="telefon : ${courseLists}">
+            <td th:text="${telefon.c_id}"></td>
+            <td th:text="${telefon.Marka}"></td>
+            <td th:text="${telefon.Model}"></td>
+            <td th:text="${telefon.Lokacija}"></td>
+            <td th:text="${telefon.cena}"></td>
+            <td th:text="${telefon.opis}"></td>
+
+
+
+        </tr>
+        </tbody>
+    </table>
+
+
+    <br>
+    <br>
+<center>
+    <nav aria-label="...">
+        <br>
+        <a class="btn btn-primary" th:href="@{/login}"  role="button" >Pristup kao admin </a>
+
+
+    </nav>
+
+</center>
+
+
+
+
+</div>
+</body>
+</html>

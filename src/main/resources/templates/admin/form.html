@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <th:block th:include="fragments/header :: head"> </th:block>
+</head>
+<body>
+<div class="container">
+    <br>
+    <br>
+    <h1>
+       Dodavanje novih telefona u bazu
+    </h1>
+
+    <div class="alert alert-primary" role="alert">
+       Ovoj stranici samo admin ima pristup
+    </div>
+    <form  th:object="${courseForm}"  method="post" th:action="@{/admin/addCourse}"  cssClass="form" >
+
+        <input type="hidden" th:field="*{c_id}"/>
+
+
+        <div class="form-group">
+            <label>Marka</label>
+            <input th:field="*{Marka}" type="text" class="form-control"  />
+        </div>
+        <div class="form-group">
+            <label>Model</label>
+            <input type="text" class="form-control" th:field="*{Model}" />
+        </div>
+        <div class="form-group">
+            <label>Lokacija</label>
+            <input type="text" class="form-control" th:field="*{Lokacija}" />
+        </div>
+        <div class="form-group">
+            <label>Cena</label>
+            <input type="number" class="form-control" th:field="*{cena}" />
+        </div> <div class="form-group">
+        <label>Opis</label>
+        <input type="text" class="form-control" th:field="*{opis}" />
+    </div>
+
+
+        <button type="submit" class="btn btn-primary">Snimi telefon</button>
+    </form>
+    <br>
+
+    <footer>
+
+        <th:block th:include="fragments/footer :: footer"></th:block>
+
+    </footer>
+
+</div>
+</body>
+</html>

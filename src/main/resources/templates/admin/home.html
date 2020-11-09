@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <style>
+        #dugme{
+            visibility: hidden;
+        }
+        #dugme1{
+            visibility: hidden;
+        }
+    </style>
+
+
+    <title>IT355-PZ-Admin strana</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+
+    </form>
+
+    <div class="panel-group" style="margin-top:40px">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span th:utext="${userName}"></span>
+
+                <form th:action="@{/logout}" method="get">
+
+                <button class=" btn btn-md btn-danger " name="registration"
+                        type="Submit">Logout
+                </button>
+
+
+
+            </div>
+            <div class="panel-body">
+                <img th:src="@{/images/pozadina.jpg}" class="img-responsive center-block" width="400" height="400"
+                     alt="Beer"/>
+
+                <h1>Lista svih telefona </h1>
+                <br>
+                <table class="table table-striped">
+                    <thead>
+                    <th scope="row">#ID</th>
+                    <th scope="row">Marka</th>
+                    <th scope="row">Model</th>
+                    <th scope="row">Lokacija</th>
+                    <th scope="row">Cena</th>
+                    <th scope="row">Opis</th>
+                    <th scope="row">Update</th>
+                    <th scope="row">Delete</th>
+                    </thead>
+                    <tbody>
+                    <tr th:each="telefon : ${courseLists}">
+                        <td th:text="${telefon.c_id}"></td>
+                        <td th:text="${telefon.Marka}"></td>
+                        <td th:text="${telefon.Model}"></td>
+                        <td th:text="${telefon.Lokacija}"></td>
+                        <td th:text="${telefon.cena}"></td>
+                        <td th:text="${telefon.opis}"></td>
+
+
+                        <td>
+                            <a class="btn btn-primary" th:href="@{/updateCourse/__${telefon.c_id}__}"  role="button" >Update</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" th:href="@{/deleteCourse/__${telefon.c_id}__}" role="button" >Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <br>
+                <a class="btn btn-primary" th:href="@{/admin/addCoursePage}"  role="button" >Dodaj novi telefon </a>
+                <br>
+
+                <nav aria-label="...">
+
+
+            </div>
+            <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
